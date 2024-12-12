@@ -1,10 +1,10 @@
 {% extends 'website/base.html'%}
 {% load static %}
 
-        
+
 {% block content %}
         <div class="header-height"></div>
-        
+
         <section class="slider-section">
             <div class="slider-wrapper">
                 <div id="main-slider" class="nivoSlider">
@@ -21,7 +21,7 @@
                                    <h5 class="wow cssanimation fadeInBottom">Join Us Today</h5>
                                    <h1 class="wow cssanimation leFadeInRight sequence">As we Worship The Lord</h1>
                                     <p class="wow cssanimation fadeInTop" data-wow-delay="1s">Yet a time is coming and has now come when the true worshipers will worship the Father in the Spirit and in truth, <br> they are the kind of worshipers the Father seeks. God is spirit, and his worshipers must worship in the Spirit and in truth.”</p>
-                                    <a href="about.html" class="default-btn wow cssanimation fadeInBottom" data-wow-delay="0.8s">About Us</a>
+                                    <a href="{% url 'website:about' %}" class="default-btn wow cssanimation fadeInBottom" data-wow-delay="0.8s">About Us</a>
                                 </div>
                            </div>
                         </div>
@@ -34,7 +34,7 @@
                                <div class="slider-text">
                                     <h1 class="wow cssanimation fadeInTop" data-wow-delay="1s" data-wow-duration="800ms">In His Presence <br>there is fullness of joy</h1>
                                     <p class="wow cssanimation fadeInBottom" data-wow-delay="1s">choose you this day whom ye will serve; whether the gods which your fathers served that were on the other side of the flood, <br>or the gods of the Amorites, in whose land ye dwell: but as for me and my house, we will serve the Lord.</p>
-                                    <a href="about.html" class="default-btn wow cssanimation fadeInBottom" data-wow-delay="0.8s">About Us</a>
+                                    <a href="{% url 'website:about' %}" class="default-btn wow cssanimation fadeInBottom" data-wow-delay="0.8s">About Us</a>
                                 </div>
                            </div>
                         </div>
@@ -57,7 +57,7 @@
                 </div> <!-- /#slider-caption-3 -->
             </div>
         </section><!-- /#slider-Section -->
-        
+
 
         </section><!-- /Causes Section -->
 
@@ -90,7 +90,7 @@
             </div>
          </section><!-- Events Section -->
 
-        
+
         <section class="campaigns-section bd-bottom">
             <div class="container">
                 <div class="row">
@@ -106,7 +106,7 @@
                         <div class="video-wrap">
                             <img src="{% static 'img/Championing For Intergrity.png' %}" alt="video">
                             <div class="play">
-                                <a class="img-popup" data-autoplay="true" data-vbtype="video" 
+                                <a class="img-popup" data-autoplay="true" data-vbtype="video"
                                 href="https://youtu.be/nkSiaXCZ7Pg"><i class="ti-control-play"></i></a>
                             </div>
                         </div>
@@ -114,10 +114,10 @@
                 </div>
             </div>
         </section><!-- /Featured Campaigns Section -->
-        
-       
-        
-        
+
+
+
+
         <section class="testimonial-section bd-bottom padding">
             <div class="container">
                 <div class="section-heading text-center mb-40">
@@ -135,20 +135,20 @@
                             <h4>{{testimony.testimony_giver}} <span>{{testimony.position }}</span></h4>
                         </div>
                     </div>
-                 {% endfor %}   
+                 {% endfor %}
             </div>
         </section><!-- Testimonial Section -->
-        
+
         <section class="blog-section bg-grey bd-bottom padding">
-            
-                            
+
+
                             </div><!-- Post 3 -->
                         </div>
                     </div><!-- Blog Posts -->
                 </div>
             </div>
         </section><!-- Blog Section -->
-        
+
         </div><!-- ./Sponsor Section -->
-        
- {% endblock content %}   
+
+ {% endblock content %}
