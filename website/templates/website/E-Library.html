@@ -1,0 +1,162 @@
+{% extends 'website/base.html'%}
+{% load static %}
+
+        
+{% block content %}
+        
+        <div class="header-height"></div>
+        
+        <div class="pager-header">
+            <div class="container">
+                <div class="page-content">
+                    <h2>Our Volunteers</h2>
+                    <p>Help today because tomorrow you may be the one who <br>needs more helping!</p>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active">Voluenteers</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /Page Header -->
+        
+        <section class="about-section bd-bottom shape circle padding">
+            <div class="container">
+                <div class="row">
+                   <div class="col-md-4 xs-padding">
+                        <div class="profile-wrap">
+                            <img class="profile" src="{% static 'img/profile.jpg' %}" alt="profile">
+                            <h3>Jonathan Smith <span>CEO & Founder of Charitify.</span></h3>
+                            <p>The secret to happiness lies in helping others. Never underestimate the difference YOU can make in the lives of the poor, the abused and the helpless.</p>
+                            <img src="{% static 'img/sign.png' %}" alt="sign">
+                        </div>
+                    </div>
+                    <div class="col-md-8 xs-padding">
+                        <div class="about-wrap row">
+                            <div class="col-md-6 xs-padding">
+                                <img src="{% static 'img/history.jpg' %}" alt="about-thumb">
+                                <h3>Our History</h3>
+                                <p>The secret to happiness lies in helping others. Never underestimate the difference YOU can make in the lives of the poor.</p>
+                                <a href="#" class="default-btn">Read More</a>
+                            </div>
+                            <div class="col-md-6 xs-padding">
+                                <img src="{% static 'img/mission.jpg' %}" alt="about-thumb">
+                                <h3>Our Mission</h3>
+                                <p>The secret to happiness lies in helping others. Never underestimate the difference YOU can make in the lives of the poor.</p>
+                                <a href="#" class="default-btn">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!-- /Causes Section -->
+        
+        <section class="team-section bg-grey bd-bottom padding">
+            <div class="container">
+                <div class="team-wrapper row">
+                    <div class="col-lg-12 sm-padding">
+                        <div class="team-wrap row">
+                            <div class="col-md-3 xs-padding">
+                                <div class="team-details">
+                                   <img src="{% static 'img/team-1.jpg' %}" alt="team">
+                                    <div class="hover">
+                                        <h3>Jonathan Smith <span>Communicator</span></h3>
+                                    </div>
+                                </div>
+                            </div><!-- /Team-1 -->
+                            <div class="col-md-3 xs-padding">
+                                <div class="team-details">
+                                   <img src="{% static 'img/team-2.jpg' %}" alt="team">
+                                    <div class="hover">
+                                        <h3>Angelina Rose <span>Certified Reader</span></h3>
+                                    </div>
+                                </div>
+                            </div><!-- /Team-2 -->
+                            <div class="col-md-3 xs-padding">
+                                <div class="team-details">
+                                    <img src="{% static 'img/team-3.jpg' %}" alt="team">
+                                    <div class="hover">
+                                        <h3>Taylor Swift <span>Event Creator</span></h3>
+                                    </div>
+                                </div>
+                            </div><!-- /Team-3 -->
+                            <div class="col-md-3 xs-padding">
+                                <div class="team-details">
+                                   <img src="{% static 'img/team-4.jpg' %}" alt="team">
+                                    <div class="hover">
+                                        <h3>Michel Brown <span>Internet Specialist</span></h3>
+                                    </div>
+                                </div>
+                            </div><!-- /Team-4 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!-- /Team Section -->
+        
+        <section id="counter" class="counter-section">
+		    <div class="container">
+                <ul class="row counters">
+                    <li class="col-md-3 col-sm-6 sm-padding">
+                        <div class="counter-content">
+                            <i class="ti-money"></i>
+                            <h3 class="counter">85389</h3>
+                            <h4 class="text-white">Money Donated</h4>
+                        </div>
+                    </li>
+                    <li class="col-md-3 col-sm-6 sm-padding">
+                        <div class="counter-content">
+                            <i class="ti-face-smile"></i>
+                            <h3 class="counter">10693</h3>
+                            <h4 class="text-white">Volunteer Around The World</h4>
+                        </div>
+                    </li>
+                    <li class="col-md-3 col-sm-6 sm-padding">
+                        <div class="counter-content">
+                            <i class="ti-user"></i>
+                            <h3 class="counter">50177</h3>
+                            <h4 class="text-white">People Impacted</h4>
+                        </div>
+                    </li>
+                    <li class="col-md-3 col-sm-6 sm-padding">
+                        <div class="counter-content">
+                            <i class="ti-comments"></i>
+                            <h3 class="counter">669</h3>
+                            <h4 class="text-white">Positive Feedbacks</h4>
+                        </div>
+                    </li>
+                </ul>
+		    </div>
+		</section><!-- Counter Section -->
+        
+        <div class="sponsor-section bd-bottom">
+            <div class="container">
+                <ul id="sponsor-carousel" class="sponsor-items owl-carousel">
+                    <li class="sponsor-item">
+                        <img src="{% static 'img/sponsor-1.png' %}" alt="sponsor-image">
+                    </li>
+                    <li class="sponsor-item">
+                        <img src="{% static 'img/sponsor-2.png' %}" alt="sponsor-image">
+                    </li>
+                    <li class="sponsor-item">
+                        <img src="{% static 'img/sponsor-3.png' %}" alt="sponsor-image">
+                    </li>
+                    <li class="sponsor-item">
+                        <img src="{% static 'img/sponsor-4.png' %}" alt="sponsor-image">
+                    </li>
+                    <li class="sponsor-item">
+                        <img src="{% static 'img/sponsor-5.png' %}" alt="sponsor-image">
+                    </li>
+                    <li class="sponsor-item">
+                        <img src="{% static 'img/sponsor-6.png' %}" alt="sponsor-image">
+                    </li>
+                    <li class="sponsor-item">
+                        <img src="{% static 'img/sponsor-7.png' %}" alt="sponsor-image">
+                    </li>
+                    <li class="sponsor-item">
+                        <img src="{% static 'img/sponsor-8.png' %}" alt="sponsor-image">
+                    </li>
+                </ul>
+            </div>
+        </div><!-- ./Sponsor Section -->
+
+ {% endblock content %}

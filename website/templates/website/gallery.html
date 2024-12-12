@@ -1,0 +1,86 @@
+{% extends 'website/base.html'%}
+{% load static %}
+
+        
+{% block content %}
+        
+        <div class="header-height"></div>
+        
+        <div class="pager-header">
+            <div class="container">
+                <div class="page-content">
+                    <h2>Image Gallery</h2>
+                    <p>Our Best Momements Captured On lenses!</p>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active">Gallery</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /Page Header -->
+        
+        <section class="gallery-section bg-grey bd-bottom padding">
+            <div class="container">
+                <div class="row">
+                    <ul class="gallery-filter align-center mb-30">
+                        <li class="active" data-filter="*">All</li>
+                        <li data-filter=".branding">Events</li>
+                        <li data-filter=".design">Services</li>
+                        <li data-filter=".wordpress">Fellowships</li>
+                        <li data-filter=".marketing">Out Doors</li>
+                    </ul><!-- /.gallery filter -->
+                </div>
+                <div class="gallery-items row">
+                    <div class="col-lg-4 col-sm-6 single-item branding design">
+                        <div class="gallery-wrap">
+                            <img src="{% static 'img/Event Fest.png' %}" alt="gallery">
+                            <div class="hover">
+                                <a class="img-popup" data-gall="galleryimg" href="img/Event Fest.png"><i class="ti-image"></i></a> 
+                            </div>
+                        </div>
+                    </div><!-- /Item-1 -->
+                    <div class="col-lg-4 col-sm-6 single-item marketing wordpress">
+                        <div class="gallery-wrap">
+                            <img src="{% static 'img/Event Crusade.png' %}" alt="gallery">
+                            <div class="hover">
+                                <a class="img-popup" data-gall="galleryimg" href="img/Event Crusade.png"><i class="ti-image"></i></a> 
+                            </div>
+                        </div>
+                    </div><!-- /Item-2 -->
+                    <div class="col-lg-4 col-sm-6 single-item wordpress design branding">
+                        <div class="gallery-wrap">
+                            <img src="{% static 'img/Event Service.png' %}" alt="gallery">
+                            <div class="hover">
+                                <a class="img-popup" data-gall="galleryimg" href="img/Event Service.png"><i class="ti-image"></i></a> 
+                            </div>
+                        </div>
+                    </div><!-- /Item-3 -->
+                    <div class="col-lg-4 col-sm-6 single-item design branding wordpress">
+                        <div class="gallery-wrap">
+                            <img src="{% static 'img/Event fellowship.png' %}" alt="gallery">
+                            <div class="hover">
+                                <a class="img-popup" data-gall="galleryimg" href="img/Event fellowship.png"><i class="ti-image"></i></a> 
+                            </div>
+                        </div>
+                    </div><!-- /Item-4 -->
+                    <div class="col-lg-4 col-sm-6 single-item branding marketing">
+                        <div class="gallery-wrap">
+                            <img src="{% static 'img/Event dances.png' %}" alt="gallery">
+                            <div class="hover">
+                                <a class="img-popup" data-gall="galleryimg" href="img/Event dances.png"><i class="ti-image"></i></a> 
+                            </div>
+                        </div>
+                    </div><!-- /Item-5 -->
+                    <div class="col-lg-4 col-sm-6 single-item marketing design">
+                        <div class="gallery-wrap">
+                            <img src="{% static 'img/Event Graduation.png' %}" alt="gallery">
+                            <div class="hover">
+                                <a class="img-popup" data-gall="galleryimg" href="img/Event Graduation.png"><i class="ti-image"></i></a> 
+                            </div>
+                        </div>
+                    </div><!-- /Item-6 -->
+                </div>
+            </div>
+        </section><!-- /Gallery Section -->
+
+ {% endblock content %}
