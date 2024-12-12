@@ -9,9 +9,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="">
         <meta name="author" content="mediaministrydevelopers">
-       
+
         <title>Egerton University Njoro Campus Christian Union</title>
-        
+
 		<link rel="shortcut icon" type="image/x-icon" href="img/logo2.png">
 
         <!-- Font Awesome Icons CSS -->
@@ -45,11 +45,11 @@
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        
+
         <div class="site-preloader-wrap">
             <div class="spinner"></div>
         </div><!-- Preloader -->
-        
+
         <header id="header" class="header-section">
             <div class="top-header">
                 <div class="container">
@@ -86,18 +86,18 @@
                                 <li><a href="{% url 'website:about' %}">About</a></li>
                                 <li><a href="{% url 'website:leadership' %}">Leadership</a></li>
                                 <li><a href="{% url 'website:ministries' %}">Ministries</a></li>
-                                <li><a href="#">Pages</a> 
+                                <li>Pages
                                     <ul>
                                        <li><a href="{% url 'website:gallery' %}">Gallery</a></li>
                                        <li><a href="{% url 'website:library' %}">E-Library</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="blog-grid.html">Blog</a> 
-                                    <ul>
+                                <li><a href="{% url 'website:blogs' %}">Blog</a>
+                                    <!-- <ul>
                                        <li><a href="blog-grid.html">Blog Grid</a></li>
                                        <li><a href="blog-sidebar.html">Blog Left Sidebar</a></li>
                                        <li><a href="blog-single.html">Blog Single</a></li>
-                                    </ul>
+                                    </ul> -->
                                 </li>
                                 <li> <a href="{% url 'website:contact' %}">Contact</a></li>
                             </ul>
@@ -132,7 +132,7 @@
                 <div class="widget-content">
                        <h3>Mission</h3>
                     <ul class="widget-link">
-                        <li><a href="#">To be Christian Believers holistically equiped<br> 
+                        <li><a href="#">To be Christian Believers holistically equiped<br>
                             for service and holy living</a></li>
                        </ul>
 
@@ -141,7 +141,7 @@
                         <li><a href="#">Committed to cultivating the fellowship of believers</a></li>
                        </ul>
                 </div>
-                
+
             </div>
             <div class="col-md-4 xs-padding">
                 <div class="widget-content">

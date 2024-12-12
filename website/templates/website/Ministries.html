@@ -1,11 +1,11 @@
 {% extends 'website/base.html'%}
 {% load static %}
 
-        
+
 {% block content %}
-        
+
         <div class="header-height"></div>
-        
+
         <div class="pager-header">
             <div class="container">
                 <div class="page-content">
@@ -18,7 +18,7 @@
                 </div>
             </div>
         </div><!-- /Page Header -->
-       
+
        <section class="events-section bg-grey bd-bottom padding">
            <div class="container">
                 <div id="event-carousel" class="events-wrap owl-Carousel">
@@ -33,18 +33,18 @@
                             <a href="https://wa.me/{{ministry.ministry_chair}}" class="default-btn" target="_blank" class="default-btn">More Info Contact</a>
                         </div>
                     </div><!-- Literature-1 -->
-                 {% endfor %}   
+                 {% endfor %}
                 </div>
            </div>
         </section><!-- Events Section -->
-        
+
         <section class="cta-section d-flex align-items-center">
             <div class="container">
                 <div class="row">
                     <div class="col-md-9">
                        <div class="cta-content">
                            <h2>Ready to Join Ministry/E-Team?</h2>
-                            <p>Do you wish to serve God through your talents and gifts? Then plug in a ministry nad grow spiritually andskill wise.</p>
+                            <p>Do you wish to serve God through your talents and gifts? Then plug in a ministry and grow spiritually and skill-wise.</p>
                        </div>
                     </div>
                     <div class="col-md-3 d-flex align-items-center text-right">
@@ -53,7 +53,7 @@
                </div>
             </div>
         </section><!-- Call To Action Section -->
-        
+
         <section class="blog-section bg-grey bd-bottom padding">
             <div class="container">
                 <div class="section-heading text-center mb-40">
@@ -64,81 +64,23 @@
                 <div class="row">
                     <div class="col-lg-12 xs-padding">
                         <div class="blog-items grid-list row">
+                          {% for eteam in eteams %}
                             <div class="col-md-4 padding-15">
                                 <div class="blog-post">
-                                    <img src="{% static 'img/CET.png' %}" alt="blog post">
+                                    <img src="{{eteam.team_image.url}}" alt="blog post">
                                     <div class="blog-content">
-                                        <h3><a href="#">Central Evangelistic Team (CET)</a></h3>
-                                        <p>CET Comprises of Members from Nyandarua, Nyeri, Kirinyanga, Muranga, Kiambu and Nairobi Counties.</p>
-                                        <a href="https://wa.me/254704442096" class="default-btn" target="_blank" class="default-btn">More Info Contact</a>
+                                        <h3><a href="#">{{eteam.team_name}}</a></h3>
+                                        <p>{{eteam.team_description}}.</p>
+                                        <a href="https://wa.me/{{ eteam.team_chair }}" class="default-btn" target="_blank" class="default-btn">More Info Contact</a>
                                     </div>
                                 </div>
                             </div><!-- CET -->
-                            <div class="col-md-4 padding-15">
-                                <div class="blog-post">
-                                    <img src="{% static 'img/NET.png' %}" alt="blog post">
-                                    <div class="blog-content">
-                                        <h3><a href="#">Nyanza Evangelistic Team (NET)</a></h3>
-                                        <p>Nyanza Evangelistic Team (NET) Comprises of Members from Siaya, Kisumu, Homa Bay, Nyamira, Kisii and Migori counties.</p>
-                                        <a href="https://wa.me/254790483365" class="default-btn" target="_blank" class="default-btn">More Info Contact</a>
-                                    </div>
-                                </div>
-                            </div><!-- NET -->
-                            <div class="col-md-4 padding-15">
-                                <div class="blog-post">
-                                    <img src="{% static 'img/RIVET.png' %}" alt="blog post">
-                                    <div class="blog-content">
-                                        <h3><a href="#">Rift Valley Evangelistic Team</a></h3>
-                                        <p>RIVET Comprises of Members from Turkana, West Pokot, Samburu, Baringo, Laikipia, Narok, Nakuru, Kajiado, Trans Nzoia, Nandi, Bomet, Kericho, Uasin Gishu, and Elgeiyo Marakwet Counties</p>
-                                        <a href="https://wa.me/254703639246" class="default-btn" target="_blank" class="default-btn">More Info Contact</a>
-                                    </div>
-                                </div>
-                            </div><!-- RIVET -->
-                            <div class="col-md-4 padding-15">
-                                <div class="blog-post">
-                                    <img src="{% static 'img/WESO.png' %}" alt="blog post">
-                                    <div class="blog-content">
-                                        <h3><a href="#">Western Outreach (WESO)</a></h3>
-                                        <p>Western Outreach (WESO) Is an Evangelistic Team that comprises of Members from Bungoma, Busia, Kakamega and Vihiga counties. It covers the western region of Kenya</p>
-                                        <a href="https://wa.me/254111681972" class="default-btn" target="_blank" class="default-btn">More Info Contact</a>
-                                    </div>
-                                </div>
-                            </div><!-- WESO -->
-                            <div class="col-md-4 padding-15">
-                                <div class="blog-post">
-                                    <img src="{% static 'img/MUBET.png' %}" alt="blog post">
-                                    <div class="blog-content">
-                                        <h3><a href="#">Mid-Eastern United Brethren Evangelistic Team (MUBET)</a></h3>
-                                        <p>Mid-Eastern United Brethren Evangelistic Team (MUBET) Comprises of Members from Isiolo, Meru and Tharaka Nithi counties.</p>
-                                        <a href="https://wa.me/254113687780" class="default-btn" target="_blank" class="default-btn">More Info Contact</a>
-                                    </div>
-                                </div>
-                            </div><!-- MUBET -->
-                            <div class="col-md-4 padding-15">
-                                <div class="blog-post">
-                                    <img src="{% static 'img/UET.png' %}" alt="blog post">
-                                    <div class="blog-content">
-                                        <h3><a href="#">Uttermost Evangelistic Team</a></h3>
-                                        <p>UET Comprises of Members from Marsabit, Mandera, Wajir, Garissa,Machakos, Taita Taveta, Makueni, Kitui, Tana River, Mombasa, Lamu, Kwale, Kilifi and Malindi counties.</p>
-                                        <a href="https://wa.me/254718853031" class="default-btn" target="_blank" class="default-btn">More Info Contact</a>
-                                    </div>
-                                </div>
-                            </div><!-- UET -->
-                            <div class="col-md-4 padding-15">
-                                <div class="blog-post">
-                                    <img src="{% static 'img/EMUSETA.png' %}" alt="blog post">
-                                    <div class="blog-content">
-                                        <h3><a href="#">Emmulatable Students and Associates Evangelistic Team (EMUSETA)</a></h3>
-                                        <p>EMUSETA Comprises of Members from majorly Embu county and associated members.</p>
-                                        <a href="https://wa.me/254759212246" class="default-btn" target="_blank" class="default-btn">More Info Contact</a>
-                                    </div>
-                                </div>
-                            </div><!-- EMUSETA -->
+                          {% endfor %}
                         </div>
                     </div><!-- E-Teams -->
                 </div>
             </div>
         </section><!-- Ministries / E-Teams Section -->
-        
-        
+
+
 {% endblock content %}

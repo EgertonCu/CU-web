@@ -22,6 +22,7 @@ class Event(models.Model):
     event_date = models.DateField()
     event_description = models.TextField()
     event_venue = models.CharField(max_length=100)
+    event_is_upcoming = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.event_name}- {self.event_date}"
@@ -32,12 +33,16 @@ class Testimony(models.Model):
     position = models.CharField(max_length=100)
     testimony = models.TextField()
 
+    class Meta:
+        verbose_name_plural = "Testimonies"
+
     def __str__(self):
-        return f"{self.testimony_giver} testimony."
+        return f"{self.testimony_giver}'s testimony."
 
 
 class Exec(models.Model):
     spiritual_year = models.CharField(max_length=50)
+    current_spiritual_year = models.CharField(max_length=50, default='2024/2025')
     group_image = models.ImageField(upload_to='media/execs', null=True, blank=True)
 
     def __str__(self):
@@ -74,4 +79,3 @@ class Eteam(models.Model):
 
     def __str__(self):
         return f"{self.team_name}"
-    

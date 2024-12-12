@@ -3,7 +3,13 @@ from .models import *
 
 # Create your views here.
 def homepage(request):
-    return render(request, 'website/index.html')
+    events = Event.objects.all()
+    testimonies = Testimony.objects.all()
+    context = {
+        'events': events,
+        'testimonies': testimonies,
+    }
+    return render(request, 'website/index.html', context)
 
 def leadership(request):
     leaders = Leader.objects.all()
@@ -13,9 +19,11 @@ def leadership(request):
     return render(request, 'website/Leadership.html', context)
 
 def ministries(request):
+    eteams = Eteam.objects.all()
     ministries = Ministry.objects.all()
     context = {
         'ministries': ministries,
+        'eteams': eteams,
     }
     return render(request, 'website/Ministries.html', context)
 

@@ -9,9 +9,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="">
         <meta name="author" content="DynamicLayers">
-       
+
         <title>Egerton University Njoro Campus Christian Union</title>
-        
+
 		<link rel="shortcut icon" type="image/x-icon" href="img/logo2.png">
 
         <!-- Font Awesome Icons CSS -->
@@ -45,11 +45,11 @@
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        
+
         <div class="site-preloader-wrap">
             <div class="spinner"></div>
         </div><!-- Preloader -->
-        
+
         <header id="header" class="header-section">
             <div class="top-header">
                 <div class="container">
@@ -86,18 +86,18 @@
                                 <li><a href="{% url 'website:about' %}">About</a></li>
                                 <li><a href="{% url 'website:leadership' %}">Leadership</a></li>
                                 <li><a href="{% url 'website:ministries' %}">Ministries</a></li>
-                                <li><a href="#">Pages</a> 
+                                <li>Pages
                                     <ul>
                                        <li><a href="{% url 'website:gallery' %}">Gallery</a></li>
-                                       <li><a href="E-Library.html">E-Library</a></li>
+                                       <li><a href="{% url 'website:library' %}">E-Library</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="blog-grid.html">Blog</a> 
-                                    <ul>
+                                <li><a href="{% url 'website:blogs' %}">Blogs</a>
+                                    <!-- <ul>
                                        <li><a href="blog-grid.html">Blog Grid</a></li>
                                        <li><a href="blog-sidebar.html">Blog Sidebar</a></li>
                                        <li><a href="blog-single.html">Blog Single</a></li>
-                                    </ul>
+                                    </ul> -->
                                 </li>
                                 <li> <a href="{% url 'website:contact' %}">Contact</a></li>
                             </ul>
@@ -107,9 +107,9 @@
                 </div>
             </div>
         </header><!-- /Header Section -->
-        
+
         <div class="header-height"></div>
-        
+
         <div class="pager-header">
             <div class="container">
                 <div class="page-content">
@@ -122,13 +122,13 @@
                 </div>
             </div>
         </div><!-- /Page Header -->
-        
+
         <section class="contact-section padding">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d249.
         35858427533262!2d35.93165600603046!3d-0.365030430931147!2m3!1f0!2f0!3f0!
         3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x18298752c9fed347%3A0xfcf061f5ffb07c68!
-        2sEgerton%20B1%20Church!5e0!3m2!1sen!2ske!4v1723058489533!5m2!1sen!2ske" 
-        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" 
+        2sEgerton%20B1%20Church!5e0!3m2!1sen!2ske!4v1723058489533!5m2!1sen!2ske"
+        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"></iframe>
             <!-- /#google_map -->
             <div class="container">
@@ -200,7 +200,7 @@
                         <div class="widget-content">
                                <h3>Mission</h3>
                             <ul class="widget-link">
-                                <li><a href="#">To be Christian Believers holistically equiped<br> 
+                                <li><a href="#">To be Christian Believers holistically equiped<br>
                                     for service and holy living</a></li>
                                </ul>
 
@@ -209,7 +209,7 @@
                                 <li><a href="#">Committed to cultivating the fellowship of believers</a></li>
                                </ul>
                         </div>
-                        
+
                     </div>
                     <div class="col-md-4 xs-padding">
                         <div class="widget-content">
@@ -225,7 +225,7 @@
                 </div>
             </div>
         </section><!-- ./Widget Section -->
-        
+
         <footer class="footer-section">
 			<div class="container">
                 <div class="row">
@@ -242,9 +242,9 @@
                 </div>
 			</div>
 		</footer><!-- /Footer Section -->
-        
+
 		<a data-scroll href="#header" id="scroll-to-top"><i class="arrow_up"></i></a>
-	
+
 		<!-- jQuery Lib -->
 		<script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
 		<!-- Bootstrap JS -->
@@ -281,7 +281,7 @@
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGm_weV-pxqGWuW567g78KhUd7n0p97RY"></script>
 		<!-- Main JS -->
 		<script src="{% static 'js/main.js' %}"></script>
-    
+
         <script>
 
         (function($){ "use strict";
@@ -289,14 +289,14 @@
         /*=========================================================================
             Google Map Settings
         =========================================================================*/
-                         
+
             google.maps.event.addDomListener(window, 'load', init);
 
             function init() {
 
                 var mapOptions = {
                     zoom: 11,
-                    center: new google.maps.LatLng(40.6700, -73.9400), 
+                    center: new google.maps.LatLng(40.6700, -73.9400),
                     scrollwheel: false,
                     navigationControl: false,
                     mapTypeControl: false,

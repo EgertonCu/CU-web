@@ -69,33 +69,23 @@
                      <p>These are our upcoming  Events</p>
                  </div><!-- /Section Heading -->
                  <div id="event-carousel" class="events-wrap owl-Carousel">
+                    {% for event in events %}
+                         {% if event.event_is_upcoming %}
                      <div class="events-item">
                          <div class="event-thumb">
-                            <img src="{% static 'img/Christmass.png' %}" alt="events">
+                            <img src="{{event.event_image.url}}" alt="events">
                          </div>
                          <div class="event-details">
-                             <h3> HAPPY FESTIVE SEASON</h3>
+                             <h3> {{ event.event_name }}</h3>
                              <div class="event-info">
-                                 <p><i class="ti-calendar"></i>Happening : 1St - 30th DEC 2024</p>
-                                 <p><i class="ti-location-pin"></i>At your Comfort</p>
+                                 <p><i class="ti-calendar"></i>Happening : {{event.event_date.day}}/{{event.event_date.month}}/{{event.event_date.year}}</p>
+                                 <p><i class="ti-location-pin"></i>{{event.event_venue}}</p>
                              </div>
-                             <p>EUNCCU wishes you and your families a happy festive season</p>
+                             <p>{{event.event_description}}</p>
                          </div>
                      </div><!-- Event-1 -->
-                     <div class="events-item">
-                         <div class="event-thumb">
-                            <img src="{% static 'img/new year.png' %}" alt="events">
-                         </div>
-                         <div class="event-details">
-                             <h3>Happy New Year 2024</h3>
-                             <div class="event-info">
-                                 <p><i class="ti-calendar"></i>Happening : 1st - 31st  Jan 2025.</p>
-                                 <p><i class="ti-location-pin"></i>At your Comfort</p>
-                             </div>
-                             <p>This Climaxes our spiritual year, and transition from one leadership to another</p>
-                         </div>
-                     
-                     </div><!-- Event-3 -->
+                     {% endif %}
+                    {% endfor %}
                  </div>
             </div>
          </section><!-- Events Section -->
@@ -136,37 +126,16 @@
                     <p>These are the testmonies of our members <br> of the goodness of God in their lives.</p>
                 </div><!-- /Section Heading -->
                 <div id="testimonial-carousel" class="testimonial-carousel owl-carousel">
+                    {% for testimony in testimonies%}
                     <div class="testimonial-item">
                         <p>
-                            EUNCCU has helped me grow holistically and spiritually, providing sessions and friendships that enrich my life. I cherish my weekends at B1 church and consider this community a true blessing.</p>
+                            {{testimony.testimony}}</p>
                         <div class="testi-footer">
-                           <img src="{% static 'img/Test 1.png' %}" alt="profile">
-                            <h4>Lynne Kanana <span>Chairperson, Praise & Worship Ministry</span></h4>
+                           <img src="{{testimony.image.url}}" alt="profile">
+                            <h4>{{testimony.testimony_giver}} <span>{{testimony.position }}</span></h4>
                         </div>
                     </div>
-                    <div class="testimonial-item">
-                        <p>
-                            EUNCCU has provided me with direction and purpose, shaping my spiritual growth through fellowship, worship, and activities. It has become my home and deepened my relationship with God.</p>
-                        <div class="testi-footer">
-                           <img src="{% static 'img/Test 2.png' %}" alt="profile">
-                            <h4>Faith Mumbe <span>Chairperson UET</span></h4>
-                        </div>
-                    </div>
-                    <div class="testimonial-item">
-                        <p>EUNCCU has mentored many individuals, including government officials, through fellowships, Bible studies, and mentorship programs significantly, and I celebrate its enduring legacy. Long live EUNCCU!</p>
-                        <div class="testi-footer">
-                           <img src="{% static 'img/Test 3.png' %}" alt="profile">
-                            <h4>James Mbuvi <span>Vice Chairperson EUNCCU</span></h4>
-                        </div>
-                    </div>
-                    <div class="testimonial-item">
-                        <p>EUNCCU is a source of joy and peace, fostering growth and a deeper understanding of God. We should remember that our journey ahead is beautiful because our God reigns.</p>
-                        <div class="testi-footer">
-                           <img src="{% static 'img/Test 4.png' %}" alt="profile">
-                            <h4>Timothy Kimathi <span>Chairperson Ebenezer Ministry</span></h4>
-                        </div>
-                    </div>
-                </div>
+                 {% endfor %}   
             </div>
         </section><!-- Testimonial Section -->
         
