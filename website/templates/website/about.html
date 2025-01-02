@@ -1,24 +1,24 @@
 {% extends 'website/base.html'%}
 {% load static %}
 
-        
+
 {% block content %}
-        
+
         <div class="header-height"></div>
-        
+
         <div class="pager-header">
             <div class="container">
                 <div class="page-content">
                     <h2>About Us</h2>
                     <p> We are a Religious Organization</p>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'website:home'%}">Home</a></li>
                         <li class="breadcrumb-item active">About Us</li>
                     </ol>
                 </div>
             </div>
         </div><!-- /Page Header -->
-        
+
         <section class="about-section bg-grey bd-bottom padding">
             <div class="container">
                 <div class="row about-wrap">
@@ -31,7 +31,7 @@
                         <div class="about-content">
                             <h2>You are definitely intrigued to <br> discover who we are.</h2>
                             <p>Egerton University, Njoro Campus Christian Union (EUNCCU), is a Union of Christian students in Egerton University Njoro Campus bound together in common faith in the one and only true God, committed to living according to the Holy Biblical Scriptures.</p>
-                            <a href="img/About (EUNCCU) Constitution.pdf" class="default-btn" target="_blank" rel="noopener no-referrer">Our Constitution</a>
+                            <a href="{% static 'img/EUNCCU-CONSTITUTION.pdf' %}" class="default-btn" target="_blank" rel="noopener no-referrer">Our Constitution</a>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,40 @@
+{% extends 'website/base.html'%}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>E-Library</title>
+</head>
+<body>
+    <h1>Welcome to the E-Library</h1>
+
+    <button id="recommendationButton">Get Book Recommendations</button>
+    <div id="recommendations"></div>
+
+    <ul>
+        {% for book in books %}
+        <li>
+            <a href="{{ book.content_url }}" onclick="trackClick({{ book.id }})">
+                {{ book.title }} by {{ book.author }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <script>
+        async function getRecommendations() {
+            const userResponse = prompt("How are you feeling today?");
+            const response = await fetch(`/library/ai-recommendations/?response=${encodeURIComponent(userResponse)}`);
+            const data = await response.json();
+            const recommendationsDiv = document.getElementById("recommendations");
+            recommendationsDiv.innerHTML = "Recommended books: " + data.recommendations.map(book => book.title).join(", ");
+        }
+
+        async function trackClick(bookId) {
+            await fetch(`/library/track-click/${bookId}/`);
+        }
+
+        document.getElementById("recommendationButton").addEventListener("click", getRecommendations);
+    </script>
+</body>
+</html>

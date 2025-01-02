@@ -1,24 +1,24 @@
 {% extends 'website/base.html'%}
 {% load static %}
 
-        
+
 {% block content %}
-        
+
         <div class="header-height"></div>
-        
+
         <div class="pager-header">
             <div class="container">
                 <div class="page-content">
                     <h2>Our Volunteers</h2>
                     <p>Help today because tomorrow you may be the one who <br>needs more helping!</p>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'website:home'%}">Home</a></li>
                         <li class="breadcrumb-item active">Voluenteers</li>
                     </ol>
                 </div>
             </div>
         </div><!-- /Page Header -->
-        
+
         <section class="about-section bd-bottom shape circle padding">
             <div class="container">
                 <div class="row">
@@ -49,7 +49,7 @@
                 </div>
             </div>
         </section><!-- /Causes Section -->
-        
+
         <section class="team-section bg-grey bd-bottom padding">
             <div class="container">
                 <div class="team-wrapper row">
@@ -92,7 +92,7 @@
                 </div>
             </div>
         </section><!-- /Team Section -->
-        
+
         <section id="counter" class="counter-section">
 		    <div class="container">
                 <ul class="row counters">
@@ -127,7 +127,7 @@
                 </ul>
 		    </div>
 		</section><!-- Counter Section -->
-        
+
         <div class="sponsor-section bd-bottom">
             <div class="container">
                 <ul id="sponsor-carousel" class="sponsor-items owl-carousel">

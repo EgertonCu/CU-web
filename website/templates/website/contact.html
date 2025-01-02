@@ -92,16 +92,15 @@
                                        <li><a href="{% url 'website:library' %}">E-Library</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="{% url 'website:blogs' %}">Blogs</a>
                                     <!-- <ul>
                                        <li><a href="blog-grid.html">Blog Grid</a></li>
                                        <li><a href="blog-sidebar.html">Blog Sidebar</a></li>
                                        <li><a href="blog-single.html">Blog Single</a></li>
                                     </ul> -->
-                                </li>
+                                <!-- </li> -->
                                 <li> <a href="{% url 'website:contact' %}">Contact</a></li>
                             </ul>
-                            <a href="#" class="default-btn">Log In/Sign Up</a>
+                            <a href="{% url 'website:register' %}" class="default-btn">Register</a>
                        </div>
                     </div>
                 </div>
@@ -116,7 +115,7 @@
                     <h2>Contact With Us</h2>
                     <p>Do You Have a Question, Inquiry or Comment? Then Get in touch with us !</p>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'website:home'%}">Home</a></li>
                         <li class="breadcrumb-item active">Contact</li>
                     </ol>
                 </div>
