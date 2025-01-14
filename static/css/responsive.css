@@ -83,7 +83,7 @@
 
 /* ---- Start of min-width 480px and max-width 768px CSS ---- */
 @media all and (min-width: 480px) and (max-width: 768px) {
-	
+
 }
 /* ---- End of min-width 480px and max-width 768px CSS ---- */
 
@@ -107,7 +107,7 @@
         display: none;
     }
     .padding{
-        padding: 60px 0;
+        padding: 40px 0;
     }
     .xs-padding{
     	padding: 15px;
@@ -249,7 +249,7 @@
 
 /* ---- Start of max-width 420px CSS ---- */
 @media all and (max-width: 420px) {
-    
+
 }
 /* ---- End of max-width 420px CSS ---- */
 

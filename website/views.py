@@ -53,3 +53,9 @@ def contact(request):
 
 def registration(request):
     return render(request, "website/Membership_Reg.html")
+
+def userlogin(request):
+    return render(request, "website/login.html")
+
+def password_reset(request):
+    return render(request, "website/Reset_password.html")

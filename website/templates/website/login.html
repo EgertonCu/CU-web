@@ -4,9 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Egerton University Njoro Campus Christian Union || Registration</title>
-
-    <link rel="icon" href="{% static 'img/logo2.png'%}" type="image/x-icon"> <!-- Replace with your favicon file path -->
+    <title>Egerton University Njoro Campus Christian Union || Login</title>
+    <link rel="icon" href="{% static 'img/logo2.png' %}" type="image/x-icon"> <!-- Replace with your favicon file path -->
     <link rel="shortcut icon" type="image/x-icon" href="img/logo2.png">
 
         <!-- Font Awesome Icons CSS -->
@@ -34,7 +33,7 @@
 		<!-- Responsive CSS -->
         <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
 
-        <!-- <link rel="stylesheet" href="{% static 'css/Registration.css' %}"> -->
+        <link rel="stylesheet" href="{% static 'css/Registration.css' %}">
 
         <script src="{% static 'js/vendor/modernizr-2.8.3-respond-1.4.2.min.js' %}"></script>
 
@@ -145,7 +144,7 @@
               .form-container2 {
                   max-width: 90%; /* Make the form wider on smaller screens */
                   padding: 15px;
-                  margin-top: 45px;
+                  margin-top: 15px;
               }
 
               h2 {
@@ -257,149 +256,69 @@
             </div>
         </header><!-- /Header Section -->
 
-    <div class="form-container">
+    <div class="form-container2">
         <!-- Logo Image -->
-        <img src="{% static 'img/logo2.png' %}" alt="Egerton University Christian Union Logo" class="logo">
-        <h2>Registration</h2>
-        <form id="registrationForm">
-            <label for="fullName">Full Name</label>
-            <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+        <img src="{% static 'img/logo2.png' %}" alt="Logo" class="logo">
+        <h2>Login Form</h2>
+        <form id="loginForm">
+            <label for="loginEmail">Email</label>
+            <input type="email" id="loginEmail" name="loginEmail" placeholder="Enter your email" required>
 
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Enter your email" required>
-
-            <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="phone" placeholder="e.g., 07********" required>
-
-            <label for="registrationNumber">Reg. Number</label>
-            <input type="text" id="registrationNumber" name="registrationNumber" placeholder="Enter your Registration number" required>
-
-            <label for="homeCounty">Home County</label>
-            <input list="countyList" id="homeCounty" name="homeCounty" placeholder="Enter or select your county" required>
-            <datalist id="countyList">
-                <option value="Baringo">
-                <option value="Bomet">
-                <option value="Bungoma">
-                <option value="Busia">
-                <option value="Elgeyo-Marakwet">
-                <option value="Embu">
-                <option value="Garissa">
-                <option value="Homa Bay">
-                <option value="Isiolo">
-                <option value="Kajiado">
-                <option value="Kakamega">
-                <option value="Kericho">
-                <option value="Kiambu">
-                <option value="Kilifi">
-                <option value="Kirinyaga">
-                <option value="Kisii">
-                <option value="Kisumu">
-                <option value="Kitui">
-                <option value="Kwale">
-                <option value="Laikipia">
-                <option value="Lamu">
-                <option value="Machakos">
-                <option value="Makueni">
-                <option value="Mandera">
-                <option value="Marsabit">
-                <option value="Meru">
-                <option value="Migori">
-                <option value="Mombasa">
-                <option value="Murang'a">
-                <option value="Nairobi">
-                <option value="Nakuru">
-                <option value="Nandi">
-                <option value="Narok">
-                <option value="Nyamira">
-                <option value="Nyandarua">
-                <option value="Nyeri">
-                <option value="Samburu">
-                <option value="Siaya">
-                <option value="Taita-Taveta">
-                <option value="Tana River">
-                <option value="Tharaka-Nithi">
-                <option value="Trans Nzoia">
-                <option value="Turkana">
-                <option value="Uasin Gishu">
-                <option value="Vihiga">
-                <option value="Wajir">
-                <option value="West Pokot">
-            </datalist>
-
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Create a password" required>
-
-            <label for="confirmPassword">Confirm Password</label>
-            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
-
-            <div class="consent">
-                <input type="checkbox" id="consentCheckbox" name="consentCheckbox" required>
-                <label for="consentCheckbox">
-                    I agree to the <a href="{% url 'website:contact'%}" target="_blank">terms and conditions</a> and consent to the processing of my personal data.
-                </label>
-            </div>
+            <label for="loginPassword">Password</label>
+            <input type="password" id="loginPassword" name="loginPassword" placeholder="Enter your password" required>
 
             <div class="form-actions">
-                <button type="submit">Register</button>
+                <button type="submit">Login</button>
+                <button type="button" onclick="redirectToRegistration()">Register</button>
             </div>
+            <p>Forgot your password? <a href="{% url 'website:reset'%}">Reset</a></p>
         </form>
-        <p>Already registered? <a href="{% url 'website:login'%}">Login</a></p> <!-- Added "Already registered?" link -->
     </div>
-    <!-- <script src="{% static 'Registration.js' %}"></script> -->
 
     <script>
-        // Function to redirect to login page
-        function redirectToLogin() {
-            window.location.href = "{% url 'website:login'%}"; // Make sure the login.html is created separately
+        // Function to redirect to registration page
+        function redirectToRegistration() {
+            window.location.href = "{% url 'website:register'%}"; // Replace "registration.html" with the actual registration page file
         }
-
-        // Password match validation
-        document.getElementById('registrationForm').addEventListener('submit', function(event) {
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-
-            if (password !== confirmPassword) {
-                alert("Passwords do not match!");
-                event.preventDefault(); // Prevent form submission if passwords don't match
-            }
-        });
     </script>
+
+
     <a data-scroll href="#header" id="scroll-to-top"><i class="arrow_up"></i></a>
 
-    <!-- jQuery Lib -->
-    <script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
-    <!-- Bootstrap JS -->
-    <script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
-    <!-- Tether JS -->
-    <script src="{% static 'js/vendor/tether.min.js' %}"></script>
+		<!-- jQuery Lib -->
+		<script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
+		<!-- Bootstrap JS -->
+		<script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
+		<!-- Tether JS -->
+		<script src="{% static 'js/vendor/tether.min.js' %}"></script>
         <!-- Imagesloaded JS -->
         <script src="{% static 'js/vendor/imagesloaded.pkgd.min.js' %}"></script>
-    <!-- OWL-Carousel JS -->
-    <script src="{% static 'js/vendor/owl.carousel.min.js' %}"></script>
-    <!-- isotope JS -->
-    <script src="{% static 'js/vendor/jquery.isotope.v3.0.2.js' %}"></script>
-    <!-- Smooth Scroll JS -->
-    <script src="{% static 'js/vendor/smooth-scroll.min.js' %}"></script>
-    <!-- venobox JS -->
-    <script src="{% static 'js/vendor/venobox.min.js' %}"></script>
+		<!-- OWL-Carousel JS -->
+		<script src="{% static 'js/vendor/owl.carousel.min.js' %}"></script>
+		<!-- isotope JS -->
+		<script src="{% static 'js/vendor/jquery.isotope.v3.0.2.js' %}"></script>
+		<!-- Smooth Scroll JS -->
+		<script src="{% static 'js/vendor/smooth-scroll.min.js' %}"></script>
+		<!-- venobox JS -->
+		<script src="{% static 'js/vendor/venobox.min.js' %}"></script>
         <!-- ajaxchimp JS -->
         <script src="{% static 'js/vendor/jquery.ajaxchimp.min.js' %}"></script>
         <!-- Counterup JS -->
-    <script src="{% static 'js/vendor/jquery.counterup.min.js' %}"></script>
+		<script src="{% static 'js/vendor/jquery.counterup.min.js' %}"></script>
         <!-- waypoints js -->
-    <script src="{% static 'js/vendor/jquery.waypoints.v2.0.3.min.js' %}"></script>
+		<script src="{% static 'js/vendor/jquery.waypoints.v2.0.3.min.js' %}"></script>
         <!-- Slick Nav JS -->
         <script src="{% static 'js/vendor/jquery.slicknav.min.js' %}"></script>
         <!-- Nivo Slider JS -->
         <script src="{% static 'js/vendor/jquery.nivo.slider.pack.js' %}"></script>
         <!-- Letter Animation JS -->
-    <script src="{% static 'js/vendor/letteranimation.min.js' %}"></script>
+		<script src="{% static 'js/vendor/letteranimation.min.js' %}"></script>
         <!-- Wow JS -->
-    <script src="{% static 'js/vendor/wow.min.js' %}"></script>
-    <!-- Contact JS -->
-    <script src="{% static 'js/contact.js' %}"></script>
-    <!-- Main JS -->
-    <script src="{% static 'js/main.js' %}"></script>
+		<script src="{% static 'js/vendor/wow.min.js' %}"></script>
+		<!-- Contact JS -->
+		<script src="{% static 'js/contact.js' %}"></script>
+		<!-- Main JS -->
+		<script src="{% static 'js/main.js' %}"></script>
 
 </body>
 </html>

@@ -13,5 +13,8 @@ urlpatterns = [
     # path('blogs/', views.blogsingle, name='blogs'),
     path('library/', views.library, name='library'),
     path('register/', views.registration, name='register'),
+    path('login/', views.userlogin, name='login'),
+    path('reset_password/', views.password_reset, name='reset'),
+
 
 ]

@@ -39,8 +39,31 @@
 		<!-- Responsive CSS -->
         <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
 
+        <link rel="stylesheet" href="{% static 'css/Registration.css'%}">
 
-        <script src="{% static 'js/vendor/modernizr-2.8.3-respond-1.4.2.min.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'css/Reset_password.css'%}">
+
+
+        <style >
+          body {
+              background-image: url("{% static 'img/reg.png' %}"); /* Set your image URL here */
+
+          }
+
+          body::before {
+            content: '';
+            /* position: absolute; */
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("{% static 'img/reg.png' %}");
+            background-size: cover;
+            opacity: 0.6; /* Reduce the opacity of the background image */
+            /* z-index: -1; /* Ensure the image is behind any content */ */
+          }
+
+        </style>
 
     </head>
     <body>
@@ -102,7 +125,7 @@
                                     </ul> -->
                                 <!-- </li> -->
                                 <li> <a href="{% url 'website:contact' %}">Contact</a></li>
-                                <li> <a href="{% url 'website:register' %}">Register</a> </li>
+                                <li> <a href="{% url 'website:register' %}"</a>Register</li>
                             </ul>
                             <!-- <a href="{% url 'website:register' %}" class="default-btn">Register</a> -->
                        </div>
@@ -114,74 +137,7 @@
 {% block content %}
 {% endblock content%}
 
-<section class="widget-section padding">
-    <div class="container">
-        <div class="widget-wrap row">
-            <div class="col-md-4 xs-padding">
-                <div class="widget-content">
-                    <img src="{% static 'img/logo2.png' %}" alt="logo">
-                    <h3>EUNCCU</h3>
-                    <p>Egerton University Njoro Campus Christian Union ~ Our God Reigns ~</p>
-                    <ul class="social-icon">
-                        <li><a href="https://www.facebook.com/egertoncu.org" target="_blank" rel="noopener no-referrer"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="https://x.com/egertoncu/" target="_blank" rel="noopener no-referrer"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="https://www.instagram.com/cu_egerton/" target="_blank" rel="noopener no-referrer"><i class="fa fa-instagram"></i></a></li>
-                        <li><a href="https://wa.me/254102186205" target="_blank" rel="noopener no-referrer"><i class="fa fa-whatsapp"></i></a></li>
-                        <li><a href="https://www.youtube.com/@EgertonUniversityNjoroCampusCU" target="_blank" rel="noopener no-referrer"><i class="fa fa-youtube"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-4 xs-padding">
-                <div class="widget-content">
-                       <h3>Mission</h3>
-                    <ul class="widget-link">
-                        <li><a href="#">To be Christian Believers holistically equiped<br>
-                            for service and holy living</a></li>
-                       </ul>
 
-                       <h3>Vision</h3>
-                    <ul class="widget-link">
-                        <li><a href="#">Committed to cultivating the fellowship of believers</a></li>
-                       </ul>
-                </div>
-
-            </div>
-            <div class="col-md-4 xs-padding">
-                <div class="widget-content">
-                    <h3>Our Location</h3>
-                    <ul class="address">
-                        <li><i class="ti-email"></i> info@eunccu.org</li>
-                        <li><i class="ti-mobile"></i> +(254) 102 186205</li>
-                        <li><i class="ti-world"></i> www.eunccu.org</li>
-                        <li><i class="ti-location-pin"></i> B1 Hall (FASS). Egerton University Njoro Campus, Kenya</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</section><!-- ./Widget Section -->
-
-<footer class="footer-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 sm-padding">
-              <div class="copyright">&copy; <span id="current-year"></span> EUNCCU Powered by Mediaministrydevelopers</div>
-
- <script>
-     // Get the current year and display it in the element with id "current-year"
-     document.getElementById("current-year").textContent = new Date().getFullYear();
- </script>
-            </div>
-            <div class="col-md-6 sm-padding">
-                <ul class="footer-social">
-                    <li><a href="#">Comments</a></li>
-                    <li><a href="{% url 'website:contact'%}">Terms</a></li>
-                    <li><a href="#">Report Problem</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</footer><!-- /Footer Section -->
 
 <a data-scroll href="#header" id="scroll-to-top"><i class="arrow_up"></i></a>
 
@@ -219,6 +175,8 @@
 <script src="{% static 'js/contact.js' %}"></script>
 <!-- Main JS -->
 <script src="{% static 'js/main.js' %}"></script>
+
+<script src="{% static 'js/vendor/modernizr-2.8.3-respond-1.4.2.min.js' %}"></script>
 
 </body>
 </html>
