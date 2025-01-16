@@ -15,6 +15,10 @@ import dj_database_url
 
 from pathlib import Path
 
+import pymysql
+
+pymysql.install_as_MySQLdb()
+
 # SECURE_SSL_REDIRECT = True
 # CSRF_COOKIE_SECURE = True
 # SESSION_COOKIE_SECURE = True
@@ -30,7 +34,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-ALLOWED_HOSTS = ['eunccu.org', 'www.eunccu.org', 'cu-web.onrender.com']
+ALLOWED_HOSTS = ['eunccu.org', 'www.eunccu.org']
 
 
 
@@ -142,6 +146,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
  os.path.join(BASE_DIR, 'static/'),
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
