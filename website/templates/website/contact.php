@@ -17,7 +17,7 @@
         }
 
         // Update this to your desired email address.
-        $recipient = "contact@cracktheme.com";
+        $recipient = "info@eunccu.org";
 		$subject = "Message from $name";
 
         // Email content.

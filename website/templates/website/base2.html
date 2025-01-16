@@ -125,7 +125,11 @@
                                     </ul> -->
                                 <!-- </li> -->
                                 <li> <a href="{% url 'website:contact' %}">Contact</a></li>
-                                <li> <a href="{% url 'website:register' %}"</a>Register</li>
+                                {% if request.user.is_authenticated %}
+                                  <li> <a href="{% url 'website:logout' %}">Logout</a> </li>
+                                {% else %}
+                                <li> <a href="{% url 'website:register' %}">Register</a> </li>
+                                {% endif %}
                             </ul>
                             <!-- <a href="{% url 'website:register' %}" class="default-btn">Register</a> -->
                        </div>

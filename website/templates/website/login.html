@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Egerton University Njoro Campus Christian Union || Login</title>
+    <title>Egerton CU || Login</title>
     <link rel="icon" href="{% static 'img/logo2.png' %}" type="image/x-icon"> <!-- Replace with your favicon file path -->
-    <link rel="shortcut icon" type="image/x-icon" href="img/logo2.png">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/logo2.png' %}">
 
         <!-- Font Awesome Icons CSS -->
         <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
@@ -248,30 +248,44 @@
                                      </ul> -->
                                  <!-- </li> -->
                                  <li> <a href="{% url 'website:contact' %}">Contact</a></li>
+                                 {% if request.user.is_authenticated %}
+                                   <li> <a href="{% url 'website:logout' %}">Logout</a> </li>
+                                 {% else %}
                                  <li> <a href="{% url 'website:register' %}">Register</a> </li>
+                                 {% endif %}
                              </ul>
-                             <!-- <a href="{% url 'website:register' %}" class="default-btn">Register</a> -->
+
                     </div>
                 </div>
             </div>
         </header><!-- /Header Section -->
 
     <div class="form-container2">
+    {% if messages %}
+<div class="container mt-4">
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        {{ message }}
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
         <!-- Logo Image -->
         <img src="{% static 'img/logo2.png' %}" alt="Logo" class="logo">
         <h2>Login Form</h2>
-        <form id="loginForm">
-            <label for="loginEmail">Email</label>
-            <input type="email" id="loginEmail" name="loginEmail" placeholder="Enter your email" required>
+        <form id="loginForm" method="post" action="">
+        {% csrf_token %}
+            <label for="Email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
 
-            <label for="loginPassword">Password</label>
-            <input type="password" id="loginPassword" name="loginPassword" placeholder="Enter your password" required>
+            <label for="Password">Password</label>
+            <input type="password" id="loginPassword" name="password" placeholder="Enter your password" required>
 
             <div class="form-actions">
                 <button type="submit">Login</button>
                 <button type="button" onclick="redirectToRegistration()">Register</button>
             </div>
-            <p>Forgot your password? <a href="{% url 'website:reset'%}">Reset</a></p>
+            <p>Forgot your password? <a href="{% url 'website:forgot'%}">Reset</a></p>
         </form>
     </div>
 
@@ -319,6 +333,19 @@
 		<script src="{% static 'js/contact.js' %}"></script>
 		<!-- Main JS -->
 		<script src="{% static 'js/main.js' %}"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const alerts = document.querySelectorAll(".alert");
+            alerts.forEach(function (alert) {
+                setTimeout(() => {
+                    alert.classList.remove("show");
+                    alert.classList.add("fade");
+                    setTimeout(() => alert.remove(), 500); // Remove element after fade-out animation
+                }, 4000); // 4 seconds
+            });
+        });
+    </script>
 
 </body>
 </html>

@@ -30,7 +30,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['eunccu.org', 'www.eunccu.org']
+
+
+
 
 
 # Application definition
@@ -76,6 +79,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'union.wsgi.application'
+
+
 
 
 # Database
@@ -145,3 +150,20 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'eunccu.org'  # Use the SMTP server of your email provider
+EMAIL_PORT = 465  # Common port for SSL
+EMAIL_USE_TLS = False  # Use TLS for secure communication
+EMAIL_USE_SSL = True  # Set to True if using SSL instead of TLS
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')  # Your email address
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')  # Your email password
+DEFAULT_FROM_EMAIL = f'Egerton CU <{EMAIL_HOST_USER}>'
+
+AUTH_USER_MODEL = 'website.CustomUser'
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',  # Default backend
+    'website.backends.EmailAuthBackend',  # Custom email authentication backend
+]

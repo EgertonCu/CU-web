@@ -99,7 +99,11 @@
                                     </ul> -->
                                 <!-- </li> -->
                                 <li> <a href="{% url 'website:contact' %}">Contact</a></li>
+                                {% if request.user.is_authenticated %}
+                                  <li> <a href="{% url 'website:logout' %}">Logout</a> </li>
+                                {% else %}
                                 <li> <a href="{% url 'website:register' %}">Register</a> </li>
+                                {% endif %}
                             </ul>
                             <!-- <a href="{% url 'website:register' %}" class="default-btn">Register</a> -->
                        </div>
@@ -147,9 +151,19 @@
                     </div>
                     <div class="col-md-6 xs-padding">
                         <div class="contact-form">
+                          {% if messages %}
+                      <div class="container mt-4">
+                          {% for message in messages %}
+                          <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                              {{ message }}
+                          </div>
+                          {% endfor %}
+                      </div>
+                      {% endif %}
                             <h3>Drop us a line</h3>
                             <p>Hi. Let's know hiw we can be of help.</p>
-                            <form action="contact.php" method="post" id="ajax_form" class="form-horizontal">
+                          <form action="" method="post" class="form-horizontal">
+                              {% csrf_token %}
                                 <div class="form-group colum-row row">
                                     <div class="col-sm-6">
                                         <input type="text" id="name" name="name" class="form-control" placeholder="Name" required>
@@ -164,14 +178,10 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <form action="https://api.web3forms.com/submit" method="POST" class="contact-left">
-                                        <input type="hidden" name="access_key" value="c58d2a17-0e72-49c9-ae24-eb10f64f9d49">
-                                    </form>
                                     <div class="col-md-12">
-                                        <button id="submit" class="default-btn" type="submit">Send Message</button>
+                                        <button type="submit" class="default-btn" >Send Message</button>
                                     </div>
                                 </div>
-                                <div id="form-messages" class="alert" role="alert"></div>
                             </form>
                         </div>
                     </div>
@@ -235,7 +245,7 @@
                     <div class="col-md-6 sm-padding">
                         <ul class="footer-social">
                             <li><a href="#">Comments</a></li>
-                            <li><a href="#">Terms</a></li>
+                            <li><a href="{% url 'website:privacy'%}">Privacy policy</a></li>
                             <li><a href="#">Report Problem</a></li>
                         </ul>
                     </div>
@@ -318,6 +328,19 @@
 
         })(jQuery);
 
+        </script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const alerts = document.querySelectorAll(".alert");
+                alerts.forEach(function (alert) {
+                    setTimeout(() => {
+                        alert.classList.remove("show");
+                        alert.classList.add("fade");
+                        setTimeout(() => alert.remove(), 500); // Remove element after fade-out animation
+                    }, 4000); // 4 seconds
+                });
+            });
         </script>
 
     </body>

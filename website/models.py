@@ -1,5 +1,7 @@
 from django.db import models
-
+from django.contrib.auth.models import AbstractUser
+import uuid
+from django.conf import settings
 # Create your models here.
 #Exec positions choices
 POSITIONS = [
@@ -26,6 +28,16 @@ IMAGE_CATEGORIES = [
 ]
 
 #This is the Events model--used on the homepage
+class CustomUser(AbstractUser):
+    registrationNumber = models.CharField(max_length=20, unique=True, default="S13/12345/20")
+    phone = models.CharField(max_length=15, default="0712345678")
+    homeCounty = models.CharField(max_length=50, default="county")
+    full_name = models.CharField(max_length=100, default="full name")
+
+    def __str__(self):
+        return self.registrationNumber
+
+
 class Event(models.Model):
     event_name = models.CharField(max_length=100)
     event_image = models.ImageField(upload_to='media/events')
@@ -102,3 +114,21 @@ class Image(models.Model):
 
     def __str__(self):
         return f"{self.image_category}- {self.id}  {self.image}"
+
+
+
+class PasswordReset(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    reset_id = models.UUIDField(default=uuid.uuid4, unique=True, editable=False)
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"password reset for {self.user.registrationNumber} at {self.created}"
+
+class Contact(models.Model):
+    name = models.CharField(max_length=50, null=False, blank=False)
+    email = models.EmailField(null=False, blank=False)
+    message = models.TextField(null=False, blank=False)
+
+    def __str__(self):
+        return f'message from {self.name}'
