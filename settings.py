@@ -87,6 +87,8 @@ DATABASES = {
     )
 }
 
+# CSP
+CSP_SCRIPT_SRC = ("'self'", "'unsafe-inline'", "cdnjs.cloudflare.com", "ajax.googleapis.com")
 
 # =============
 # Templates
@@ -154,6 +156,7 @@ EMAIL_USE_SSL = True
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = f'Egerton University Njoro Campus Christian Union <{EMAIL_HOST_USER}>'
+SUPPORT_EMAIL = EMAIL_HOST_USER
 
 # =============
 # Custom User Model
