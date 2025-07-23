@@ -165,6 +165,7 @@ AUTH_USER_MODEL = 'website.CustomUser'
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'website.backends.EmailAuthBackend',
+    'Bstudy.auth_backend.MemberBackend',
 ]
 
 # =============
