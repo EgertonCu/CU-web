@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'website',
     'bookstore',
     'Bstudy',
+    'auth_utils.apps.AuthUtilsConfig',
 ]
 
 # =============
