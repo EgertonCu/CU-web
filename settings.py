@@ -167,6 +167,7 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'website.backends.EmailAuthBackend',
     'Bstudy.auth_backend.MemberBackend',
+    'website.backends.CustomUserAuthBackend',
 ]
 
 # =============
