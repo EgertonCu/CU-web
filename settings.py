@@ -12,11 +12,15 @@ pymysql.install_as_MySQLdb()
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
-ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = ['www.eunccu.org', 'https://www.eunccu.org', 'eunccu.org']
+ALLOWED_HOSTS = ['*']  # For development, change in production
 ROOT_URLCONF = 'union.urls'
 WSGI_APPLICATION = 'union.wsgi.application'
-LOGIN_URL = '/login/'
+LOGIN_URL = 'website:login'
+#Login redirect URL
+LOGIN_REDIRECT_URL = '/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_SITE_NAME = "Egerton University Njoro Campus Christian Union"
 
 # =============
 # Applications
@@ -38,7 +42,7 @@ INSTALLED_APPS = [
     
     # Local
     'website',
-    'bookstore',
+#     # 'bookstore',
     'Bstudy',
     'auth_utils.apps.AuthUtilsConfig',
 ]
@@ -62,18 +66,26 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# =================
-# Security Settings
-# =================
-SECURE_HSTS_SECONDS = 31_536_000  # 1 year
+# Security settings (development safe version)
+SECURE_HSTS_SECONDS = 0  # disable HSTS for local dev
 SECURE_HSTS_INCLUDE_SUBDOMAINS = False
-SECURE_HSTS_PRELOAD = True
-X_FRAME_OPTIONS = 'DENY'
+SECURE_HSTS_PRELOAD = False
 SECURE_SSL_REDIRECT = False
 CSRF_COOKIE_SECURE = False
 SESSION_COOKIE_SECURE = False
-SECURE_BROWSER_XSS_FILTER = False
-SECURE_CONTENT_TYPE_NOSNIFF = False
+
+# Session settings
+SESSION_COOKIE_NAME = 'sessionid'
+SESSION_COOKIE_PATH = '/'
+SESSION_COOKIE_DOMAIN = None  # None for local
+SESSION_COOKIE_AGE = 1209600  # 2 weeks
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+SESSION_SAVE_EVERY_REQUEST = True
+
+# Security headers
+X_FRAME_OPTIONS = 'DENY'
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_REFERRER_POLICY = 'same-origin'
 
 # =============
@@ -105,6 +117,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'Bstudy.context_processors.bstudy_link',
             ],
         },
     },
@@ -121,10 +134,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-#Login URL
-LOGIN_URL = 'website:login'
-LOGIN_REDIRECT_URL = '/'
-
 # =============
 # Internationalization
 # =============
@@ -139,12 +148,12 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
-    os.path.join(BASE_DIR, 'website/static'),
+    # os.path.join(BASE_DIR, 'website/static'),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-MEDIA_URL = 'media/'
+MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # =============
@@ -165,8 +174,8 @@ SUPPORT_EMAIL = EMAIL_HOST_USER
 AUTH_USER_MODEL = 'website.CustomUser'
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
-    'website.backends.EmailAuthBackend',
-    'Bstudy.auth_backend.MemberBackend',
+    # 'website.backends.EmailAuthBackend',
+    # 'Bstudy.auth_backend.MemberBackend',
     'website.backends.CustomUserAuthBackend',
 ]
 
@@ -184,9 +193,6 @@ CACHES = {
 YOUTUBE_API_KEY = config('YOUTUBE_API_KEY', default='')
 YOUTUBE_PLAYLIST_ID = config('YOUTUBE_PLAYLIST_ID', default='')
 
-# SESSIONS EXPIRATION
-SESSION_EXPIRE_AT_BROWSER_CLOSE = True
-
 # =============
 # File Uploads
 # =============
@@ -194,13 +200,6 @@ FILE_UPLOAD_MAX_MEMORY_SIZE = 50 * 1024 * 1024  # 50MB
 DATA_UPLOAD_MAX_MEMORY_SIZE = 50 * 1024 * 1024  # 50MB
 PROFILE_PICTURE_MAX_SIZE = 2 * 1024 * 1024  # 2MB
 ALLOWED_PROFILE_PICTURE_EXTENSIONS = ['jpg', 'jpeg', 'png', 'gif']
-
-# =============
-# Session Settings
-# =============
-SESSION_EXPIRE_AT_BROWSER_CLOSE = True
-SESSION_COOKIE_AGE = 600  # 10 minutes
-SESSION_SAVE_EVERY_REQUEST = True
 
 import os
 
