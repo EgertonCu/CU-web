@@ -1,10 +1,38 @@
+import environ
 import os
+
 from pathlib import Path
+from dotenv import load_dotenv
 from decouple import config
-import dj_database_url
+DEBUG = True
+# dj_database_url is optional; DATABASES will be constructed from environment variables directly.
 import pymysql
 
 pymysql.install_as_MySQLdb()
+
+load_dotenv()
+
+# Fallback config() to read environment variables if python-decouple is not available.
+# Usage: config('KEY', default='value', cast=bool/int/str/...)
+def config(key, default=None, cast=None):
+    val = os.environ.get(key, default)
+    if val is None:
+        return val
+    if cast:
+        if cast is bool:
+            v = str(val).lower()
+            if v in ('1', 'true', 'yes', 'on'):
+                return True
+            if v in ('0', 'false', 'no', 'off'):
+                return False
+            raise ValueError(f"Cannot cast environment variable {key!r} to bool")
+        try:
+            return cast(val)
+        except Exception as e:
+            raise ValueError(f"Cannot cast environment variable {key!r}: {e}")
+    return val
+
+
 
 # ========================
 # Core Django Configuration
@@ -16,7 +44,7 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 ALLOWED_HOSTS = ['*']  # For development, change in production
 ROOT_URLCONF = 'union.urls'
 WSGI_APPLICATION = 'union.wsgi.application'
-LOGIN_URL = 'website:login'
+
 #Login redirect URL
 LOGIN_REDIRECT_URL = '/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
@@ -41,7 +69,7 @@ INSTALLED_APPS = [
     'django_forms_bootstrap',
     
     # Local
-    'website',
+    # 'website',
 #     # 'bookstore',
     'Bstudy',
     'auth_utils.apps.AuthUtilsConfig',
@@ -91,14 +119,26 @@ SECURE_REFERRER_POLICY = 'same-origin'
 # =============
 # Databases
 # =============
+# Initialize environment variables
+env = environ.Env()
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
+SECRET_KEY = env('SECRET_KEY')
+
 DATABASES = {
-    'default': dj_database_url.config(
-        default=f"mysql://{config('DATABASE_USER')}:{config('DATABASE_PASSWORD')}@"
-                f"{config('DATABASE_HOST', default='localhost')}:" 
-                f"{config('DATABASE_PORT', default=3306, cast=int)}/"
-                f"{config('DATABASE_NAME')}?charset=utf8mb4&init_command=SET%20NAMES%20utf8mb4"
-    )
+    'default': {
+        'ENGINE': env('DATABASE_ENGINE'),
+        'NAME': env('DATABASE_NAME'),
+        'USER': env('DATABASE_USER'),
+        'PASSWORD': env('DATABASE_PASSWORD', default=''),
+        'HOST': env('DATABASE_HOST', default='localhost'),
+        'PORT': env('DATABASE_PORT', default='3306'),
+    }
 }
+
+
+
+
 
 # CSP
 CSP_SCRIPT_SRC = ("'self'", "'unsafe-inline'", "cdnjs.cloudflare.com", "ajax.googleapis.com")
@@ -109,19 +149,24 @@ CSP_SCRIPT_SRC = ("'self'", "'unsafe-inline'", "cdnjs.cloudflare.com", "ajax.goo
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [BASE_DIR / 'templates'],  # or your templates folder
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.request',  # ✅ needed for 'request'
+                'django.contrib.auth.context_processors.auth', # ✅ needed for 'user'
                 'django.contrib.messages.context_processors.messages',
-                'Bstudy.context_processors.bstudy_link',
             ],
+            'debug': DEBUG,  # Make sure DEBUG = True in development
         },
     },
 ]
+
+# For development only
+if DEBUG:
+    import mimetypes
+    mimetypes.add_type("application/javascript", ".js", True)
 
 # ====================
 # Password Validation
@@ -145,16 +190,18 @@ USE_TZ = True
 # =============
 # Static & Media Files
 # =============
-STATIC_URL = 'static/'
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-    # os.path.join(BASE_DIR, 'website/static'),
+    BASE_DIR / "static",  # for development
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATIC_ROOT = BASE_DIR / "staticfiles"  # for collectstatic in production
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' 
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = BASE_DIR / "media"
 
 # =============
 # Email Settings
@@ -171,12 +218,10 @@ SUPPORT_EMAIL = EMAIL_HOST_USER
 # =============
 # Custom User Model
 # =============
-AUTH_USER_MODEL = 'website.CustomUser'
+# AUTH_USER_MODEL = 'Bstudy.Member'
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
-    # 'website.backends.EmailAuthBackend',
-    # 'Bstudy.auth_backend.MemberBackend',
-    'website.backends.CustomUserAuthBackend',
+    'Bstudy.auth_backend.MemberBackend',
 ]
 
 # =============
